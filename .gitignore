@@ -1,0 +1,9 @@
+.project
+.settings
+.README.md.html
+target
+.DS_Store
+.idea
+pom.xml.releaseBackup
+release.properties
+
