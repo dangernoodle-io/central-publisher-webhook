@@ -192,9 +192,9 @@
   </dependencyManagement>
 
   <scm>
-    <url>https://github.com/dangernoodle-io/central-publisher-webhook</url>
-    <connection>scm:git@github.com:dangernoodle-io/central-publisher-webhook</connection>
-    <developerConnection>scm:git@github.com:dangernoodle-io/central-publisher-webhook</developerConnection>
+    <connection>scm:git:git@github.com:dangernoodle-io/central-publisher-webhook</connection>
+    <developerConnection>scm:git:git@github.com:dangernoodle-io/central-publisher-webhook</developerConnection>
+    <url>${project.url}</url>
     <tag>main</tag>
   </scm>
 
