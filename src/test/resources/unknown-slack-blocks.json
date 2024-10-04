@@ -3,7 +3,7 @@
     "type": "header",
     "text": {
       "type": "plain_text",
-      "text": "Deployment Info"
+      "text": "Maven Central Deployment"
     }
   },
   {
@@ -13,7 +13,7 @@
     "type": "section",
     "text": {
       "type": "mrkdwn",
-      "text": "*Deployment ID:*\nbd0aa1fe-96ea-4176-97e4-65404b5d584c"
+      "text": "*Deployment Id:*\nbd0aa1fe-96ea-4176-97e4-65404b5d584c"
     }
   },
   {
