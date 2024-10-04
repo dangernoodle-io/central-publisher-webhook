@@ -11,7 +11,7 @@
   </parent>
 
   <artifactId>central-publisher-webhook</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1-SNAPSHOT</version>
 
   <name>${project.artifactId}</name>
   <url>https://github.com/dangernoodle-io/central-publisher-webhook</url>
@@ -194,7 +194,7 @@
     <connection>scm:git:git@github.com:dangernoodle-io/central-publisher-webhook</connection>
     <developerConnection>scm:git:git@github.com:dangernoodle-io/central-publisher-webhook</developerConnection>
     <url>${project.url}</url>
-    <tag>0.1.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <issueManagement>
