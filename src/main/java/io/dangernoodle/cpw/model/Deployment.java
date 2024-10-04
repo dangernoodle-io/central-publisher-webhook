@@ -43,9 +43,9 @@ public record Deployment(UUID deploymentId, long timestamp, String status, Strin
     public List<LayoutBlock> asSlackBlocks()
     {
         List<LayoutBlock> blocks = asBlocks(
-            header(header -> header.text(plainText("Deployment Info"))),
+            header(header -> header.text(plainText("Maven Central Deployment"))),
             divider(),
-            section(section -> section.text(markdownText("*Deployment ID:*\n" + deploymentId))),
+            section(section -> section.text(markdownText("*Deployment Id:*\n" + deploymentId))),
             section(section -> section.fields(asSectionFields(
                 markdownText("*Status:*\n" + formatStatus()),
                 markdownText("*Timestamp:*\n" + formatTimestamp()))
