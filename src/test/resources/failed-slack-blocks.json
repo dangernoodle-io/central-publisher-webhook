@@ -1,0 +1,39 @@
+[
+  {
+    "type": "header",
+    "text": {
+      "type": "plain_text",
+      "text": "Deployment Info"
+    }
+  },
+  {
+    "type": "divider"
+  },
+  {
+    "type": "section",
+    "text": {
+      "type": "mrkdwn",
+      "text": "*Deployment ID:*\nbd0aa1fe-96ea-4176-97e4-65404b5d584c"
+    }
+  },
+  {
+    "type": "section",
+    "fields": [
+      {
+        "type": "mrkdwn",
+        "text": "*Status:*\n:x: Failed"
+      },
+      {
+        "type": "mrkdwn",
+        "text": "*Timestamp:*\nSat, 9 Mar 2024 16:00:00 GMT"
+      }
+    ]
+  },
+  {
+    "type": "section",
+    "text": {
+      "type": "mrkdwn",
+      "text": "*Artifact Package Urls:*\npackageUrl"
+    }
+  }
+]
