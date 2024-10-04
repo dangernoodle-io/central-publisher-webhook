@@ -193,7 +193,7 @@
 
   <scm>
     <url>https://github.com/dangernoodle-io/central-publisher-webhook</url>
-    <connection>scm:git:github.com:dangernoodle-io/central-publishing-webhook.git</connection>
+    <connection>scm:git:github.com:dangernoodle-io/central-publisher-webhook.git</connection>
     <developerConnection>${project.scm.connection}</developerConnection>
     <tag>main</tag>
   </scm>
