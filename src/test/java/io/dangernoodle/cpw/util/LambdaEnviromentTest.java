@@ -60,10 +60,10 @@ public class LambdaEnviromentTest
     {
         return new EnvironmentVariables(Map.of(
             "AWS_SESSION_TOKEN", "aws_session_token",
-            "SSM_CENTRAL_PASSWORD", "password",
-            "SSM_CENTRAL_USERNAME", "username",
-            "SSM_SLACK_APP_TOKEN", "slack_app_token",
-            "SSM_SLACK_CHANNEL", "channel"
+            "CENTRAL_PASSWORD", "password",
+            "CENTRAL_USERNAME", "username",
+            "SLACK_APP_TOKEN", "slack_app_token",
+            "SLACK_CHANNEL", "channel"
         ));
     }
 }

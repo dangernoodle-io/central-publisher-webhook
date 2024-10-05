@@ -7,12 +7,12 @@ public class LambdaEnvironment
 {
     public String centralPassword()
     {
-        return System.getenv("SSM_CENTRAL_PASSWORD");
+        return System.getenv("CENTRAL_PASSWORD");
     }
 
     public String centralUsername()
     {
-        return System.getenv("SSM_CENTRAL_USERNAME");
+        return System.getenv("CENTRAL_USERNAME");
     }
 
     public String sessionToken()
@@ -22,11 +22,11 @@ public class LambdaEnvironment
 
     public String slackAppToken()
     {
-        return System.getenv("SSM_SLACK_APP_TOKEN");
+        return System.getenv("SLACK_APP_TOKEN");
     }
 
     public String slackChannel()
     {
-        return System.getenv("SSM_SLACK_CHANNEL");
+        return System.getenv("SLACK_CHANNEL");
     }
 }
