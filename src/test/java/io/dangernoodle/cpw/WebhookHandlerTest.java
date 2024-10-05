@@ -12,6 +12,7 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
+import java.net.http.HttpClient;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
@@ -89,7 +90,7 @@ public class WebhookHandlerTest
         handler = new WebhookHandler()
         {
             @Override
-            Authorizer authorizer()
+            Authorizer authorizer(PStoreClient pStoreClient)
             {
                 return mockAuthorizer;
             }
@@ -101,13 +102,13 @@ public class WebhookHandlerTest
             }
 
             @Override
-            PStoreClient pStoreClient()
+            PStoreClient pStoreClient(HttpClient httpClient)
             {
                 return mockPStoreClient;
             }
 
             @Override
-            SlackClient slackClient() throws IOException, InterruptedException
+            SlackClient slackClient(HttpClient httpClient, PStoreClient pStoreClient) throws IOException, InterruptedException
             {
                 return mockSlackClient;
             }
