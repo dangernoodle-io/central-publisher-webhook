@@ -26,15 +26,9 @@ public class WebhookHandler implements RequestHandler<APIGatewayV2HTTPEvent, API
 {
     private final LambdaEnvironment environment;
 
-    private final HttpClient httpClient;
-
-    private final PStoreClient pStoreClient;
-
     public WebhookHandler()
     {
-        this.httpClient = httpClient();
         this.environment = lambdaEnvironment();
-        this.pStoreClient = pStoreClient();
     }
 
     @Override
@@ -46,13 +40,14 @@ public class WebhookHandler implements RequestHandler<APIGatewayV2HTTPEvent, API
         Deployment deployment = deserialize(event.getBody(), Deployment.class);
         logger.log("deployment: " + deployment, LogLevel.DEBUG);
 
-        try
+        try (HttpClient httpClient = httpClient())
         {
-            APIGatewayV2HTTPResponse response = authorizer().authorize(event);
+            PStoreClient pStoreClient = pStoreClient(httpClient);
+            APIGatewayV2HTTPResponse response = authorizer(pStoreClient).authorize(event);
             if (response.getStatusCode() == 200)
             {
                 String channel = pStoreClient.retrieve(environment.slackChannel(), false);
-                slackClient().send(channel, deployment);
+                slackClient(httpClient, pStoreClient).send(channel, deployment);
 
                 return response(200, "Success");
             }
@@ -69,14 +64,10 @@ public class WebhookHandler implements RequestHandler<APIGatewayV2HTTPEvent, API
             logger.log(e.getMessage(), LogLevel.ERROR);
             return response(500, "Internal server error");
         }
-        finally
-        {
-            httpClient.close();
-        }
     }
 
     // visible for testing
-    Authorizer authorizer() throws IOException, InterruptedException
+    Authorizer authorizer(PStoreClient pStoreClient) throws IOException, InterruptedException
     {
         return new Authorizer(
             pStoreClient.retrieve(environment.centralUsername(), false),
@@ -91,13 +82,13 @@ public class WebhookHandler implements RequestHandler<APIGatewayV2HTTPEvent, API
     }
 
     // visible for testing
-    PStoreClient pStoreClient()
+    PStoreClient pStoreClient(HttpClient httpClient)
     {
         return new PStoreClient(environment.sessionToken(), httpClient);
     }
 
     // visible for testing
-    SlackClient slackClient() throws IOException, InterruptedException
+    SlackClient slackClient(HttpClient httpClient, PStoreClient pStoreClient) throws IOException, InterruptedException
     {
         String token = environment.slackAppToken();
         return new SlackClient(pStoreClient.retrieve(token, true), httpClient);
