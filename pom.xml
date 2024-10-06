@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -7,17 +9,19 @@
     <groupId>io.dangernoodle</groupId>
     <artifactId>dangernoodle-io-build-pom</artifactId>
     <version>14.4.1</version>
-    <relativePath />
+    <relativePath/>
   </parent>
 
   <artifactId>central-publisher-webhook</artifactId>
-  <version>0.1.3-SNAPSHOT</version>
+  <version>0.2.0-SNAPSHOT</version>
 
   <name>${project.artifactId}</name>
   <url>https://github.com/dangernoodle-io/central-publisher-webhook</url>
   <description>aws lambda function for the maven central publisher webhook</description>
 
   <properties>
+    <argLine>-javaagent:${net.bytebuddy:byte-buddy-agent:jar} -javaagent:${org.mockito:mockito-core:jar}</argLine>
+
     <aws-lambda-java-core.version>1.2.3</aws-lambda-java-core.version>
     <aws-lambda-java-events.version>3.14.0</aws-lambda-java-events.version>
     <byte-buddy.version>1.15.1</byte-buddy.version>
@@ -72,13 +76,6 @@
           </filters>
           <minimizeJar>true</minimizeJar>
           <shadedArtifactAttached>true</shadedArtifactAttached>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <argLine>@{argLine} -javaagent:${net.bytebuddy:byte-buddy-agent:jar} -javaagent:${org.mockito:mockito-core:jar}</argLine>
         </configuration>
       </plugin>
       <plugin>
