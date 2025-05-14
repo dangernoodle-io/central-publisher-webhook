@@ -9,7 +9,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -28,8 +27,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 public class SlackClientTest
 {
-    private static final Deployment deployment = new Deployment(UUID.randomUUID(), 1710000000000L,
-        "PUBLISHED", new String[]{}, new String[]{});
+    private static final Deployment deployment = new Deployment(UUID.randomUUID(), "Deployment Name", 1710000000000L,
+        "PUBLISHED", new String[] {}, new String[] {});
 
     @Captor
     private ArgumentCaptor<HttpRequest> captor;

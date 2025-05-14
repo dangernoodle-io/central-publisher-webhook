@@ -18,6 +18,13 @@
   },
   {
     "type": "section",
+    "text": {
+      "type": "mrkdwn",
+      "text": "*Deployment Name:*\nDeployment Name"
+    }
+  },
+  {
+    "type": "section",
     "fields": [
       {
         "type": "mrkdwn",
