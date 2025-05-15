@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -7,22 +7,23 @@
     <groupId>io.dangernoodle</groupId>
     <artifactId>dangernoodle-io-build-pom</artifactId>
     <version>14.4.1</version>
-    <relativePath />
   </parent>
 
   <artifactId>central-publisher-webhook</artifactId>
-  <version>0.1.4-SNAPSHOT</version>
+  <version>0.2.0-SNAPSHOT</version>
 
   <name>${project.artifactId}</name>
   <url>https://github.com/dangernoodle-io/central-publisher-webhook</url>
-  <description>aws lambda function for the maven central publisher webhook</description>
+  <description>AWS Lambda function for the Maven Central Publisher webhook</description>
 
   <properties>
+    <argLine>-javaagent:${org.mockito:mockito-core:jar} -javaagent:${net.bytebuddy:byte-buddy-agent:jar}</argLine>
+
     <aws-lambda-java-core.version>1.2.3</aws-lambda-java-core.version>
     <aws-lambda-java-events.version>3.14.0</aws-lambda-java-events.version>
     <byte-buddy.version>1.15.1</byte-buddy.version>
     <inject-resources-junit-jupiter.version>1.0.0</inject-resources-junit-jupiter.version>
-    <jsonassert.version>2.0-rc1</jsonassert.version>
+    <json-unit.version>3.4.1</json-unit.version>
     <junit5.version>5.11.0</junit5.version>
     <mockito.version>5.14.1</mockito.version>
     <slack-api-model.version>1.43.1</slack-api-model.version>
@@ -72,13 +73,6 @@
           </filters>
           <minimizeJar>true</minimizeJar>
           <shadedArtifactAttached>true</shadedArtifactAttached>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <argLine>@{argLine} -javaagent:${net.bytebuddy:byte-buddy-agent:jar} -javaagent:${org.mockito:mockito-core:jar}</argLine>
         </configuration>
       </plugin>
       <plugin>
@@ -147,15 +141,9 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.skyscreamer</groupId>
-      <artifactId>jsonassert</artifactId>
-      <version>${jsonassert.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>net.javacrumbs.json-unit</groupId>
       <artifactId>json-unit</artifactId>
-      <version>3.4.1</version>
+      <version>${json-unit.version}</version>
       <scope>test</scope>
     </dependency>
 

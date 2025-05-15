@@ -9,14 +9,9 @@ import java.util.UUID;
 
 import io.hosuaby.inject.resources.junit.jupiter.GivenTextResource;
 import io.hosuaby.inject.resources.junit.jupiter.TestWithResources;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.skyscreamer.jsonassert.JSONAssert;
-import uk.org.webcompere.systemstubs.environment.EnvironmentVariables;
-import uk.org.webcompere.systemstubs.jupiter.SystemStub;
 import uk.org.webcompere.systemstubs.jupiter.SystemStubsExtension;
-import uk.org.webcompere.systemstubs.properties.SystemProperties;
 
 
 @TestWithResources
@@ -90,8 +85,8 @@ public class DeploymentTest
 
     private Deployment createDeployment(String status)
     {
-        return new Deployment(UUID.fromString("bd0aa1fe-96ea-4176-97e4-65404b5d584c"), 1710000000000L,
-            status, new String[]{"packageUrl"}, new String[]{"centralPaths"});
+        return new Deployment(UUID.fromString("bd0aa1fe-96ea-4176-97e4-65404b5d584c"), "Deployment Name",
+            1710000000000L, status, new String[] {"packageUrl"}, new String[] {"centralPaths"});
     }
 
     private void givenAFailedDeployment()
@@ -122,27 +117,26 @@ public class DeploymentTest
     private void thenFailedJSONMatches()
     {
         assertJsonEquals(failedBlocks, blocks, whenIgnoringPaths());
-        //JSONAssert.assertEquals(failedBlocks, blocks, true);
     }
 
     private void thenPublishedJSONMatches()
     {
-        JSONAssert.assertEquals(publishedBlocks, blocks, true);
+        assertJsonEquals(publishedBlocks, blocks);
     }
 
     private void thenPublishingJSONMatches()
     {
-        JSONAssert.assertEquals(publishingBlocks, blocks, true);
+        assertJsonEquals(publishingBlocks, blocks);
     }
 
     private void thenUnknownJSONMatches()
     {
-        JSONAssert.assertEquals(unknownBlocks, blocks, true);
+        assertJsonEquals(unknownBlocks, blocks);
     }
 
     private void thenValidatedJSONMatches()
     {
-        JSONAssert.assertEquals(validatedBlocks, blocks, true);
+        assertJsonEquals(validatedBlocks, blocks);
     }
 
     private void whenConvertToSlackBlocks()

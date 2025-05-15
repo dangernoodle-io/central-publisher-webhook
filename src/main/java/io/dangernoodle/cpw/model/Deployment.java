@@ -25,12 +25,13 @@ import com.slack.api.model.block.LayoutBlock;
  * Represents the payload received by the webhook.
  *
  * @param deploymentId Unique ID of deployment
+ * @param deploymentName Name of the deployment
  * @param timestamp Notification timestamp
  * @param status Deployment state
  * @param packageUrls PURLs of deployed artifacts
  * @param centralPaths Deployed artifact urls
  */
-public record Deployment(UUID deploymentId, long timestamp, String status, String[] packageUrls, String[] centralPaths)
+public record Deployment(UUID deploymentId, String deploymentName, long timestamp, String status, String[] packageUrls, String[] centralPaths)
 {
     private static final String FAILED = "FAILED";
 
@@ -46,6 +47,7 @@ public record Deployment(UUID deploymentId, long timestamp, String status, Strin
             header(header -> header.text(plainText("Maven Central Deployment"))),
             divider(),
             section(section -> section.text(markdownText("*Deployment Id:*\n" + deploymentId))),
+            section(section -> section.text(markdownText("*Deployment Name:*\n" + deploymentName))),
             section(section -> section.fields(asSectionFields(
                 markdownText("*Status:*\n" + formatStatus()),
                 markdownText("*Timestamp:*\n" + formatTimestamp()))
