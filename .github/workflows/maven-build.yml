@@ -2,13 +2,13 @@ name: maven-build
 
 on:
   pull_request:
+    branches: [ main ]
   push:
-    branches:
-      - main
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
-  build-main:
+  verify:
     secrets: inherit
     uses: dangernoodle-io/.github/.github/workflows/maven.yml@main
     with:
