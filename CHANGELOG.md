@@ -2,6 +2,7 @@
 
 - **0.2.0-SNAPSHOT**
   - Added `Deployment Name` to Slack message
+  - Added opinionated `terraform` module
   - Renamed `CENTRAL_` enviromment variable prefix to `WEBHOOK_`
 - **0.1.3** (10/05/2024)
   - Drop `SSM` prefix from environment variable names
