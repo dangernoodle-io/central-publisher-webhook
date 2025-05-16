@@ -27,18 +27,6 @@ public class LambdaEnviromentTest
     }
 
     @Test
-    public void testCentralPassword()
-    {
-        assertEquals("password", environment.centralPassword());
-    }
-
-    @Test
-    public void testCentralUsername()
-    {
-        assertEquals("username", environment.centralUsername());
-    }
-
-    @Test
     public void testSessionToken()
     {
         assertEquals("aws_session_token", environment.sessionToken());
@@ -56,12 +44,24 @@ public class LambdaEnviromentTest
         assertEquals("channel", environment.slackChannel());
     }
 
+    @Test
+    public void testWebhookPassword()
+    {
+        assertEquals("password", environment.webhookPassword());
+    }
+
+    @Test
+    public void testWebhookUsername()
+    {
+        assertEquals("username", environment.webhookUsername());
+    }
+
     private static EnvironmentVariables setupEnvironmentVariables()
     {
         return new EnvironmentVariables(Map.of(
             "AWS_SESSION_TOKEN", "aws_session_token",
-            "CENTRAL_PASSWORD", "password",
-            "CENTRAL_USERNAME", "username",
+            "WEBHOOK_PASSWORD", "password",
+            "WEBHOOK_USERNAME", "username",
             "SLACK_APP_TOKEN", "slack_app_token",
             "SLACK_CHANNEL", "channel"
         ));
