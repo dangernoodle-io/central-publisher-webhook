@@ -5,16 +5,6 @@ package io.dangernoodle.cpw.util;
  */
 public class LambdaEnvironment
 {
-    public String centralPassword()
-    {
-        return System.getenv("CENTRAL_PASSWORD");
-    }
-
-    public String centralUsername()
-    {
-        return System.getenv("CENTRAL_USERNAME");
-    }
-
     public String sessionToken()
     {
         return System.getenv("AWS_SESSION_TOKEN");
@@ -28,5 +18,15 @@ public class LambdaEnvironment
     public String slackChannel()
     {
         return System.getenv("SLACK_CHANNEL");
+    }
+
+    public String webhookPassword()
+    {
+        return System.getenv("WEBHOOK_PASSWORD");
+    }
+
+    public String webhookUsername()
+    {
+        return System.getenv("WEBHOOK_USERNAME");
     }
 }

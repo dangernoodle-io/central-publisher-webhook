@@ -70,8 +70,8 @@ public class WebhookHandler implements RequestHandler<APIGatewayV2HTTPEvent, API
     Authorizer authorizer(PStoreClient pStoreClient) throws IOException, InterruptedException
     {
         return new Authorizer(
-            pStoreClient.retrieve(environment.centralUsername(), false),
-            pStoreClient.retrieve(environment.centralPassword(), true)
+            pStoreClient.retrieve(environment.webhookUsername(), false),
+            pStoreClient.retrieve(environment.webhookPassword(), true)
         );
     }
 
